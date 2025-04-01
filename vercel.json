@@ -5,5 +5,8 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "static":{
+    "directory":"assets"
+  }
 }
