@@ -1,6 +1,15 @@
 {
   "version": 2,
-  "static": {
-    "directory": "./"
-  }
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
