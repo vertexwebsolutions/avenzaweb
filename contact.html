@@ -133,28 +133,24 @@ UAE</p>
        </div><!-- End Google Maps -->
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row gy-4">
-                <div class="col-lg-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-lg-6 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
+            <form class="bg-light p-5 contact-form" id="submit-form">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name" name="name" id="name" required>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                <input type="email" class="form-control" placeholder="Your Email" name="email" id="email" required>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                <input type="text" class="form-control" placeholder="Subject" name="subject" id="subject" required>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="form-group">
+                <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
             </form>
+            
           </div><!-- End Contact Form -->
 
         </div>
@@ -279,6 +275,28 @@ UAE</p>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbyf3_pDOC5QK_qRScOzcOA99Z3tcxSkmzwXOJe220Q02s2qfw_4oFd8YeUKkltQaGmi/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Something Error")
+
+            }
+        })
+    })
+</script>
 
 </body>
 
